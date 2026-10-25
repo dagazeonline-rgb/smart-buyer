@@ -20,7 +20,19 @@
 
 
 @media(max-width:520px){}
-</style></head><body>
+</style><!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+  for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+  ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e};
+  ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{};ttq._i[e]=[];ttq._i[e]._u=r;ttq._t=ttq._t||{};ttq._t[e]=+new Date;ttq._o=ttq._o||{};ttq._o[e]=n||{};n=d.createElement("script");n.type="text/javascript";n.async=!0;n.src=r+"?sdkid="+e+"&lib="+t;e=d.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+  ttq.load('DBESHDBC77U7G56GECFG');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
+</head><body>
 <div class="ticker"><div class="ticker-track"><span>🚚 Cash on Delivery Available</span> | <span>🎁 Free & Easy Returns</span> | <span>🏷️ Limited Time Offer</span> | <span>🚚 Delivery All Over Pakistan</span> | <span>📦 Organize Your Home</span> | <span>🚚 Cash on Delivery Available</span> | <span>🎁 Free & Easy Returns</span> | <span>🏷️ Limited Time Offer</span> | <span>🚚 Delivery All Over Pakistan</span> | <span>📦 Organize Your Home</span></div></div>
 
 <header><div class="hamb">☰</div><div class="logo">Smart<span><b>B</b>uyer</span></div><div class="head-icons"><span>⌕</span><span>♧</span></div></header>
@@ -48,5 +60,16 @@ document.querySelectorAll('.pack').forEach(card=>card.addEventListener('click',(
 let remaining=2*60*60+15*60;function tick(){if(remaining<=0)remaining=2*60*60+15*60;let h=Math.floor(remaining/3600),m=Math.floor((remaining%3600)/60),s=remaining%60;document.getElementById('hours').textContent=String(h).padStart(2,'0');document.getElementById('minutes').textContent=String(m).padStart(2,'0');document.getElementById('seconds').textContent=String(s).padStart(2,'0');remaining--;}tick();setInterval(tick,1000);document.getElementById('year').textContent=new Date().getFullYear();
 // Configure your deployed Google Apps Script Web App URL here to save live orders.
 const GOOGLE_SHEETS_ENDPOINT='https://script.google.com/macros/s/AKfycbzPM_Icl-d5YwTWPv0fJdN5TuW1_0lk7AJLnYypX-b3djMO0QxZhByR2IMJ_PenIWuPjA/exec';
-document.getElementById('orderForm').addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;const data=Object.fromEntries(new FormData(form).entries());const chosen=document.querySelector('.pack.selected');const packKey=chosen?chosen.dataset.pack:'1';data.product='Compression Storage Bag';data.pack=packInfo[packKey].name;data.quantity=Number(packKey);data.total=packInfo[packKey].total;data.deliveryCharges=200;data.subtotal=data.total-data.deliveryCharges;data.orderDate=new Date().toISOString();document.getElementById('thankYouOrderSummary').textContent=data.pack+' · Total Rs. '+data.total.toLocaleString('en-PK');if(typeof fbq==='function')fbq('track','Purchase',{value:data.total,currency:'PKR'});document.getElementById('thankYouPage').style.display='flex';const endpoint=GOOGLE_SHEETS_ENDPOINT;if(endpoint && endpoint.indexOf('PASTE_YOUR_')!==0){try{fetch(endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data),keepalive:true}).catch(err=>console.warn('Order submission could not be confirmed by the browser.',err));}catch(err){console.warn('Order submission failed to start.',err);}}else{console.warn('Google Sheets is not connected yet. Add the deployed Apps Script Web App URL to GOOGLE_SHEETS_ENDPOINT.');}});
+document.getElementById('orderForm').addEventListener('submit',async e=>{e.preventDefault();const form=e.currentTarget;if(!form.reportValidity())return;const data=Object.fromEntries(new FormData(form).entries());const chosen=document.querySelector('.pack.selected');const packKey=chosen?chosen.dataset.pack:'1';data.product='Compression Storage Bag';data.pack=packInfo[packKey].name;data.quantity=Number(packKey);data.total=packInfo[packKey].total;data.deliveryCharges=200;data.subtotal=data.total-data.deliveryCharges;data.orderDate=new Date().toISOString();document.getElementById('thankYouOrderSummary').textContent=data.pack+' · Total Rs. '+data.total.toLocaleString('en-PK');if(typeof fbq==='function')fbq('track','Purchase',{value:data.total,currency:'PKR'});
+if(!window.__smartBuyerTikTokPurchaseTracked && window.ttq && typeof window.ttq.track==='function'){
+  window.__smartBuyerTikTokPurchaseTracked=true;
+  window.ttq.track('CompletePayment',{
+    value:Number(data.total),
+    currency:'PKR',
+    content_type:'product',
+    content_name:'Compression Storage Bag',
+    quantity:Number(data.quantity||1)
+  });
+}
+document.getElementById('thankYouPage').style.display='flex';const endpoint=GOOGLE_SHEETS_ENDPOINT;if(endpoint && endpoint.indexOf('PASTE_YOUR_')!==0){try{fetch(endpoint,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data),keepalive:true}).catch(err=>console.warn('Order submission could not be confirmed by the browser.',err));}catch(err){console.warn('Order submission failed to start.',err);}}else{console.warn('Google Sheets is not connected yet. Add the deployed Apps Script Web App URL to GOOGLE_SHEETS_ENDPOINT.');}});
 </script></body></html>
